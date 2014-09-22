@@ -1,0 +1,59 @@
+
+<link rel="import" href="components/polymer/polymer.html">
+
+
+<polymer-element name="DocHack-app">
+  <template>
+		<title>Show me where it hurts?</title>
+		<style>
+			#phoneView {
+				display: inline-block;
+				top: 0px;
+				min-width: 320px;
+				height: 580px;
+				margin: 40px 20px 20px 20px;
+				vertical-align: top;
+			}
+			.device {
+				width: 380px;
+				height: 780px;
+				background-image: url(iphone.svg);
+				background-size: 550px 780px;
+				background-repeat: no-repeat;
+				background-position: center;
+				-webkit-transform-origin: 50% -5%;
+				transform-origin: 50% -5%;
+				-webkit-transform: scale3d( .65, .65, 1);
+				transform: scale3d( .65, .65, 1);
+			}
+			.iframe {
+				border: 4px solid #000;
+				top: 100px;
+				left: 25px;
+				position: absolute;
+				width: 320px;
+				height: 568px;
+			}
+		</style>
+		
+    	<content><div id="PhoneView" style="width: 600px; height: 540px;">
+	        <div class="device">
+	              <iframe style="margin-right: 0px; margin-left=23px" id="PhoneFrame" class="iframe" src="http://maxwellzirbel.com/betterDocHacking/www/index.html#"></iframe>
+	        </div>
+    	</div></content>
+  </template>
+  <script>
+  Polymer({
+    publish: {
+      favorite: {
+        value: false,
+        reflect: true
+      }
+    },
+    favoriteTapped: function(event, detail, sender) {
+      this.favorite = !this.favorite;
+      this.fire('favorite-tap');
+    }
+  });
+  </script>
+</polymer-element>
